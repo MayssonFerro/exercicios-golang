@@ -17,10 +17,3 @@ go build file.go
 # Executar o arquivo gerado
 ./file.exe
 ```
-
-## Notas importantes
-
-- Cada arquivo `.go` deve ser compilado individualmente para evitar conflitos de múltiplas funções `main()`
-- Use `go run arquivo.go` para execução direta
-- Use `go build arquivo.go` para criar executável
-```bash
