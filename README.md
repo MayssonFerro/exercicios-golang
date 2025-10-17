@@ -22,4 +22,5 @@ go build file.go
 
 - Cada arquivo `.go` deve ser compilado individualmente para evitar conflitos de múltiplas funções `main()`
 - Use `go run arquivo.go` para execução direta
-- Use `go build arquivo.go` para criar executável ```bash
+- Use `go build arquivo.go` para criar executável
+```bash
