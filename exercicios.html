@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios em Go</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="vscode-body vscode-light">
+    <header>
+        <h1>Exercícios em Go</h1>
+        <nav class="header-nav">
+            <a href="home.html">Home</a>
+            <a href="relatorio.html">Relatório de aulas</a>
+        </nav>
+    </header>
+    <h3>Essa página contém exercícios práticos de programação em Go, feitos dentro ou fora do ambiente de sala de aula.</h3>
+    <h2>Tutorial - Como compilar e executar</h2>
+    <h3>Opção 1: Compilar e executar diretamente</h3>
+    <pre><code class="language-bash">go run file.go
+</code></pre>
+    <h3>Opção 2: Criar executável e depois executar</h3>
+    <pre><code class="language-bash"><span class="hljs-comment"># Compilar e criar executável</span>
+go build file.go
+
+<span class="hljs-comment"># Executar o arquivo gerado</span>
+./file.exe
+</code></pre>
+
+    <h2 id="extitle">Exercícios</h2>
+    <ol>
+        <li><a href="#ex1">Soma de dois números inteiros</a></li>
+        <li><a href="#ex2">Divisão de dois números inteiros</a></li>
+        <li><a href="#ex3">Antecessor e sucessor de um número</a></li>
+        <li><a href="#ex4">Verificar se um número é par, positivo ou negativo</a></li>
+        <li><a href="#ex5">Verificar se um número é primo</a></li>
+        <li><a href="#ex6">Ordenação de sequência numérica</a></li>
+        <li><a href="#ex7">Ordenação de caracteres em ordem ascendente</a></li>
+        <li><a href="#ex8">Árvore de decisão binária</a></li>
+        <li><a href="#ex9">Valor e endereço de uma variável</a></li>
+        <li><a href="#ex10">Torre de Hanói com 3 discos</a></li>
+        <li><a href="#ex11">Dia da semana da data de nascimento</a></li>
+        <li><a href="#ex12">Igualdade entre dois números</a></li>
+        <li><a href="#ex13">Moda de uma sequência numérica</a></li>
+        <li><a href="#ex14">Verificar palíndromo</a></li>
+        <li><a href="#ex15">Área de um retângulo</a></li>
+        <li><a href="#ex16">Conversão entre unidades de temperatura</a></li>
+        <li><a href="#ex17">Jogo da adivinhação</a></li>
+        <li><a href="#ex18">Gerar arquivo JPG a partir de matrizes RGB</a></li>
+        <li><a href="#ex19">Contar vogais e consoantes</a></li>
+        <li><a href="#ex20">Encontrar ocorrências de palavras</a></li>
+        <li><a href="#ex21">Fatorial de um número</a></li>
+        <li><a href="#ex22">Hello World</a></li>
+        <li><a href="#ex23">Cálculo de IMC</a></li>
+        <li><a href="#ex24">Cálculo de MMC</a></li>
+        <li><a href="#ex25">Média de números</a></li>
+        <li><a href="#exppm">Leitura de arquivo PPM</a></li>
+    </ol>
+
+    <h2>Resolução:</h2>
+
+    <h3 id="ex1"><strong>Exercício 1 - Soma de dois números inteiros</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func soma(a, b int) int {
+	return a + b
+}
+
+func main() {
+	var num1, num2 int
+
+	fmt.Print("Digite o primeiro número: ")
+	fmt.Scan(&num1)
+
+	fmt.Print("Digite o segundo número: ")
+	fmt.Scan(&num2)
+
+	resultado := soma(num1, num2)
+
+	fmt.Printf("%d + %d = %d\n", num1, num2, resultado)
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite o primeiro número: 5
+Digite o segundo número: 3
+5 + 3 = 8
+</code></pre>
+
+    <h3 id="ex2"><strong>Exercício 2 - Divisão de dois números inteiros</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func divisao(a, b int) int {
+	return a / b
+}
+
+func main() {
+	var num1, num2 int
+
+	fmt.Print("Digite o primeiro número: ")
+	fmt.Scan(&num1)
+
+	fmt.Print("Digite o segundo número: ")
+	fmt.Scan(&num2)
+
+	resultado := divisao(num1, num2)
+
+	fmt.Printf("%d / %d = %d\n", num1, num2, resultado)
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite o primeiro número: 10
+Digite o segundo número: 2
+10 / 2 = 5
+</code></pre>
+
+    <h3 id="ex3"><strong>Exercício 3 - Antecessor e sucessor de um número</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func antecessor(a int) int {
+	return a - 1
+}
+
+func sucessor(a int) int {
+	return a + 1
+}
+
+func main() {
+	var num int
+
+	fmt.Print("Digite um número: ")
+	fmt.Scan(&num)
+	fmt.Printf("O antecessor de %d é %d\n", num, antecessor(num))
+	fmt.Printf("O sucessor de %d é %d\n", num, sucessor(num))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite um número: 7
+O antecessor de 7 é 6
+O sucessor de 7 é 8
+</code></pre>
+
+    <h3 id="ex4"><strong>Exercício 4 - Verificar se um número é par, positivo ou negativo</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func ehPar(num int) bool {
+	return num%2 == 0
+}
+
+func classificarNumero(num int) string {
+	if num > 0 {
+		return "positivo"
+	} else if num < 0 {
+		return "negativo"
+	} else {
+		return "zero"
+	}
+}
+
+func main() {
+	var numero int
+
+	fmt.Print("Digite um número: ")
+	fmt.Scan(&numero)
+
+	if ehPar(numero) {
+		fmt.Printf("O número %d é PAR\n", numero)
+	} else {
+		fmt.Printf("O número %d é ÍMPAR\n", numero)
+	}
+
+	classificacao := classificarNumero(numero)
+	fmt.Printf("O número %d é %s\n", numero, classificacao)
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite um número: -4
+O número -4 é PAR
+O número -4 é negativo
+</code></pre>
+
+    <h3 id="ex5"><strong>Exercício 5 - Verificar se um número é primo</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func ehPrimo(num int) bool {
+	if num <= 1 {
+		return false
+	}
+	if num == 2 {
+		return true
+	}
+	if num%2 == 0 {
+		return false
+	}
+	for i := 3; i*i <= num; i += 2 {
+		if num%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+	var numero int
+
+	fmt.Print("Digite um número: ")
+	fmt.Scan(&numero)
+
+	if ehPrimo(numero) {
+		fmt.Printf("%d é primo\n", numero)
+	} else {
+		fmt.Printf("%d não é primo\n", numero)
+	}
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite um número: 17
+17 é primo
+</code></pre>
+
+    <h3 id="ex22"><strong>Exercício 22 - Hello World</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, World!")
+}
+</code></pre>
+    <p>Saída:</p>
+    <pre><code>Hello, World!
+</code></pre>
+
+    <h3 id="ex6"><strong>Exercício 6 - Ordenação de sequência numérica</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	var x int
+	nums := make([]int, 0)
+
+	fmt.Println("Digite números inteiros para ordenar. Digite 0 para terminar (0 não será incluído).")
+	for i := 1; ; i++ {
+		fmt.Printf("Digite o %dº número: ", i)
+		if _, err := fmt.Scan(&x); err != nil {
+			fmt.Println("Entrada inválida. Encerrando.")
+			return
+		}
+		if x == 0 {
+			break
+		}
+		nums = append(nums, x)
+	}
+
+	if len(nums) == 0 {
+		fmt.Println("Nenhum número para ordenar.")
+		return
+	}
+
+	sort.Ints(nums)
+
+	fmt.Println("Sequência ordenada:")
+	for _, v := range nums {
+		fmt.Printf("%d ", v)
+	}
+	fmt.Println()
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite números inteiros para ordenar. Digite 0 para terminar (0 não será incluído).
+Digite o 1º número: 5
+Digite o 2º número: 2
+Digite o 3º número: 8
+Digite o 4º número: 1
+Digite o 5º número: 0
+Sequência ordenada:
+1 2 5 8
+</code></pre>
+
+    <h3 id="ex7"><strong>Exercício 7 - Ordenação de caracteres em ordem ascendente</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"sort"
+	"strings"
+)
+
+func main() {
+	fmt.Println("Digite uma linha de caracteres:")
+
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil && len(input) == 0 {
+		return
+	}
+
+	input = strings.TrimRight(input, "\r\n")
+
+	runes := []rune(input)
+
+	sort.Slice(runes, func(i, j int) bool { return runes[i] < runes[j] })
+
+	parts := make([]string, len(runes))
+	for i, r := range runes {
+		parts[i] = string(r)
+	}
+
+	fmt.Println("Caracteres ordenados:", strings.Join(parts, " "))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite uma linha de caracteres:
+golang
+Caracteres ordenados:   a g l n o
+</code></pre>
+
+    <h3 id="ex8"><strong>Exercício 8 - Árvore de decisão binária</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+// Node representa um nó da árvore de decisão
+type Node struct {
+	Question string
+	Yes      *Node
+	No       *Node
+	Result   string
+}
+
+// Decide interativamente perguntando ao usuário
+func (n *Node) DecideInteractive(reader *bufio.Reader) string {
+	// Se for folha, retorna resultado
+	if n.Result != "" {
+		return n.Result
+	}
+
+	// Faz a pergunta
+	fmt.Printf("%s (sim/nao): ", n.Question)
+	resposta, _ := reader.ReadString('\n')
+	resposta = strings.TrimSpace(strings.ToLower(resposta))
+
+	// Trata resposta
+	if resposta == "sim" || resposta == "s" || resposta == "y" || resposta == "yes" {
+		return n.Yes.DecideInteractive(reader)
+	} else if resposta == "nao" || resposta == "n" || resposta == "no" {
+		return n.No.DecideInteractive(reader)
+	} else {
+		fmt.Println("❗ Resposta inválida, digite 'sim' ou 'nao'.")
+		return n.DecideInteractive(reader) // repete a pergunta
+	}
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+
+	// Folhas
+	stayHome := &Node{Result: "Ficar em casa"}
+	goOut := &Node{Result: "Sair"}
+
+	// Nó intermediário
+	isHot := &Node{
+		Question: "Está quente?",
+		Yes:      stayHome,
+		No:       goOut,
+	}
+
+	// Raiz
+	isRaining := &Node{
+		Question: "Está chovendo?",
+		Yes:      stayHome,
+		No:       isHot,
+	}
+
+	fmt.Println("Sistema de decisão:")
+	decisao := isRaining.DecideInteractive(reader)
+	fmt.Println("\nDecisão final:", decisao)
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Sistema de decisão:
+Está chovendo? (sim/nao): nao
+Está quente? (sim/nao): sim
+
+Decisão final: Ficar em casa
+</code></pre>
+
+    <h3 id="ex9"><strong>Exercício 9 - Valor e endereço de uma variável</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	var x int
+	fmt.Print("Digite um número inteiro: ")
+	if _, err := fmt.Scan(&x); err != nil {
+		fmt.Println("Erro na leitura:", err)
+		return
+	}
+
+	fmt.Println("Valor de x:", x)
+	fmt.Printf("Endereço de x: %p\n", &x)
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite um número inteiro: 42
+Valor de x: 42
+Endereço de x: 0xc00001c0a8
+</code></pre>
+
+    <h3 id="ex10"><strong>Exercício 10 - Torre de Hanói com 3 discos</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func hanoi(n int, origem, destino, auxiliar rune, pegs map[rune][]int) {
+	if n <= 0 {
+		return
+	}
+	if n == 1 {
+		disk := pegs[origem][len(pegs[origem])-1]
+		pegs[origem] = pegs[origem][:len(pegs[origem])-1]
+		pegs[destino] = append(pegs[destino], disk)
+		fmt.Printf("Mover disco %d de %c para %c\n", disk, origem, destino)
+		return
+	}
+	hanoi(n-1, origem, auxiliar, destino, pegs)
+	hanoi(1, origem, destino, auxiliar, pegs)
+	hanoi(n-1, auxiliar, destino, origem, pegs)
+}
+
+func formatPeg(p []int) string {
+	if len(p) == 0 {
+		return "[]"
+	}
+	// queremos mostrar do maior para o menor (base -> topo)
+	parts := make([]string, len(p))
+	for i := len(p) - 1; i >= 0; i-- {
+		parts[len(p)-1-i] = fmt.Sprintf("%d", p[i])
+	}
+	return "[" + strings.Join(parts, " ") + "]"
+}
+
+func main() {
+	n := 3
+	pegs := map[rune][]int{
+		'A': make([]int, 0, n),
+		'B': make([]int, 0, n),
+		'C': make([]int, 0, n),
+	}
+	for d := n; d >= 1; d-- {
+		pegs['A'] = append(pegs['A'], d)
+	}
+
+	fmt.Printf("Ordem inicial: A:%s B:%s C:%s\n", formatPeg(pegs['A']), formatPeg(pegs['B']), formatPeg(pegs['C']))
+
+	hanoi(n, 'A', 'C', 'B', pegs)
+}
+</code></pre>
+    <p>Saída:</p>
+    <pre><code>Ordem inicial: A:[1 2 3] B:[] C:[]
+Mover disco 1 de A para C
+Mover disco 2 de A para B
+Mover disco 1 de C para B
+Mover disco 3 de A para C
+Mover disco 1 de B para A
+Mover disco 2 de B para C
+Mover disco 1 de A para C
+</code></pre>
+
+    <h3 id="ex11"><strong>Exercício 11 - Dia da semana da data de nascimento</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func diaSemana(data string) (string, error) {
+	layouts := []string{"02/01/2006", "2006-01-02", "2/1/2006", time.RFC3339}
+	var t time.Time
+	var err error
+	for _, l := range layouts {
+		t, err = time.Parse(l, data)
+		if err == nil {
+			return t.Weekday().String(), nil
+		}
+	}
+	return "", fmt.Errorf("formato de data inválido")
+}
+
+func main() {
+	var s string
+	fmt.Print("Digite a data de nascimento (DD/MM/AAAA): ")
+	fmt.Scan(&s)
+	dia, err := diaSemana(s)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(dia)
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite a data de nascimento (DD/MM/AAAA): 15/08/1990
+Wednesday
+</code></pre>
+
+    <h3 id="ex12"><strong>Exercício 12 - Igualdade entre dois números</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func igual(a, b int) bool { return a == b }
+
+func main() {
+	var a, b int
+	fmt.Print("Digite dois números: ")
+	fmt.Scan(&a, &b)
+	fmt.Println(igual(a, b))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite dois números: 5 5
+true
+</code></pre>
+
+    <h3 id="ex13"><strong>Exercício 13 - Moda de uma sequência numérica</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
+func moda(nums []int) int {
+	freq := make(map[int]int)
+	best, bestCount := nums[0], 0
+	for _, n := range nums {
+		freq[n]++
+		if freq[n] > bestCount {
+			best = n
+			bestCount = freq[n]
+		}
+	}
+	return best
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Digite números separados por espaço: ")
+	line, _ := reader.ReadString('\n')
+	parts := strings.Fields(line)
+	nums := make([]int, 0, len(parts))
+	for _, p := range parts {
+		if v, err := strconv.Atoi(p); err == nil {
+			nums = append(nums, v)
+		}
+	}
+	if len(nums) == 0 {
+		fmt.Println(0)
+		return
+	}
+	fmt.Println(moda(nums))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite números separados por espaço: 1 2 3 2 4 2 5
+2
+</code></pre>
+
+    <h3 id="ex14"><strong>Exercício 14 - Verificar palíndromo</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+	"unicode"
+)
+
+func palindromo(s string) bool {
+	rs := make([]rune, 0, len(s))
+	for _, r := range strings.ToLower(s) {
+		if unicode.IsLetter(r) || unicode.IsNumber(r) {
+			rs = append(rs, r)
+		}
+	}
+	i, j := 0, len(rs)-1
+	for i < j {
+		if rs[i] != rs[j] {
+			return false
+		}
+		i++
+		j--
+	}
+	return true
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Digite uma sequência: ")
+	s, _ := reader.ReadString('\n')
+	s = strings.TrimSpace(s)
+	fmt.Println(palindromo(s))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite uma sequência: arara
+true
+</code></pre>
+
+    <h3 id="ex15"><strong>Exercício 15 - Área de um retângulo</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func area(base, altura float64) float64 { return base * altura }
+
+func main() {
+	var b, h float64
+	fmt.Print("Base: ")
+	fmt.Scan(&b)
+	fmt.Print("Altura: ")
+	fmt.Scan(&h)
+	fmt.Println(area(b, h))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Base: 5
+Altura: 3
+15
+</code></pre>
+
+    <h3 id="ex16"><strong>Exercício 16 - Conversão entre unidades de temperatura</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func cToF(c float64) float64 { return c*9/5 + 32 }
+func fToC(f float64) float64 { return (f - 32) * 5 / 9 }
+
+func main() {
+	var t float64
+	var u string
+	fmt.Print("Digite valor e unidade (C/F): ")
+	fmt.Scan(&t, &u)
+	if u == "C" || u == "c" {
+		fmt.Println(cToF(t))
+		return
+	}
+	if u == "F" || u == "f" {
+		fmt.Println(fToC(t))
+		return
+	}
+	fmt.Println("Unidade inválida")
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite valor e unidade (C/F): 25 C
+77
+</code></pre>
+
+    <h3 id="ex17"><strong>Exercício 17 - Jogo da adivinhação</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	target := rand.Intn(100) + 1
+	var guess int
+	for {
+		fmt.Print("Adivinhe (1-100): ")
+		fmt.Scan(&guess)
+		if guess < target {
+			fmt.Println("Maior")
+		} else if guess > target {
+			fmt.Println("Menor")
+		} else {
+			fmt.Println("Acertou")
+			break
+		}
+	}
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Adivinhe (1-100): 50
+Maior
+Adivinhe (1-100): 75
+Menor
+Adivinhe (1-100): 62
+Acertou
+</code></pre>
+
+    <h3 id="ex18"><strong>Exercício 18 - Gerar arquivo JPG a partir de matrizes RGB</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"encoding/binary"
+	"fmt"
+	"image"
+	"image/color"
+	"image/jpeg"
+	"os"
+)
+
+func main() {
+	var w, h int
+	fmt.Print("Largura altura: ")
+	fmt.Scan(&w, &h)
+	total := w * h
+	r := make([]uint8, total)
+	g := make([]uint8, total)
+	b := make([]uint8, total)
+	fmt.Printf("Digite %d bytes para R, G e B (decimal, separados por espaço ou newline):\n", total)
+	for i := 0; i < total; i++ {
+		var v int
+		fmt.Scan(&v)
+		r[i] = uint8(v)
+	}
+	for i := 0; i < total; i++ {
+		var v int
+		fmt.Scan(&v)
+		g[i] = uint8(v)
+	}
+	for i := 0; i < total; i++ {
+		var v int
+		fmt.Scan(&v)
+		b[i] = uint8(v)
+	}
+	img := image.NewRGBA(image.Rect(0, 0, w, h))
+	idx := 0
+	for y := 0; y < h; y++ {
+		for x := 0; x < w; x++ {
+			img.Set(x, y, color.RGBA{r[idx], g[idx], b[idx], 255})
+			idx++
+		}
+	}
+	f, err := os.Create("out.jpg")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer f.Close()
+	var opt jpeg.Options
+	opt.Quality = 80
+	_ = binary.Write(f, binary.LittleEndian, []byte{})
+	jpeg.Encode(f, img, &opt)
+	fmt.Println("out.jpg gerado")
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Largura altura: 2 2
+Digite 4 bytes para R, G e B (decimal, separados por espaço ou newline):
+255 0 0 255
+0 255 0 0
+0 0 255 255
+out.jpg gerado
+</code></pre>
+
+    <h3 id="ex19"><strong>Exercício 19 - Contar vogais e consoantes</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+	"unicode"
+)
+
+func conta(s string) (int, int) {
+	vogais := "aeiou"
+	v, c := 0, 0
+	for _, r := range strings.ToLower(s) {
+		if !unicode.IsLetter(r) {
+			continue
+		}
+		if strings.ContainsRune(vogais, r) {
+			v++
+		} else {
+			c++
+		}
+	}
+	return v, c
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Digite texto: ")
+	s, _ := reader.ReadString('\n')
+	v, c := conta(s)
+	fmt.Println(v, "vogais e", c, "consoantes")
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite texto: Programação em Go
+7 vogais e 7 consoantes
+</code></pre>
+
+    <h3 id="ex20"><strong>Exercício 20 - Encontrar ocorrências de palavras</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"regexp"
+	"strings"
+)
+
+func ocorrencias(text, pattern string) int {
+	re := regexp.MustCompile("(?i)" + regexp.QuoteMeta(pattern))
+	return len(re.FindAllStringIndex(text, -1))
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Digite o texto: ")
+	txt, _ := reader.ReadString('\n')
+	fmt.Print("Digite a palavra/padrão: ")
+	pat, _ := reader.ReadString('\n')
+	txt = strings.TrimSpace(txt)
+	pat = strings.TrimSpace(pat)
+	fmt.Println(ocorrencias(txt, pat))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite o texto: Go é uma linguagem Go muito poderosa Go
+Digite a palavra/padrão: Go
+3
+</code></pre>
+
+    <h3 id="ex21"><strong>Exercício 21 - Fatorial de um número</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func fatorial(n int) int {
+	if n <= 1 {
+		return 1
+	}
+	r := 1
+	for i := 2; i <= n; i++ {
+		r *= i
+	}
+	return r
+}
+
+func main() {
+	var n int
+	fmt.Print("Digite n: ")
+	fmt.Scan(&n)
+	fmt.Println(fatorial(n))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite n: 5
+120
+</code></pre>
+
+    <h3 id="ex23"><strong>Exercício 23 - Cálculo de IMC</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func imc(peso, altura float64) float64 { return peso / (altura * altura) }
+
+func classificaIMC(imc float64) string {
+	switch {
+	case imc < 18.5:
+		return "Abaixo do peso"
+	case imc < 25.0:
+		return "Peso normal"
+	case imc < 30.0:
+		return "Sobrepeso"
+	case imc < 35.0:
+		return "Obesidade grau I"
+	case imc < 40.0:
+		return "Obesidade grau II"
+	default:
+		return "Obesidade grau III"
+	}
+}
+
+func main() {
+	var peso, altura float64
+	fmt.Print("Peso (kg): ")
+	fmt.Scan(&peso)
+	fmt.Print("Altura (m): ")
+	fmt.Scan(&altura)
+	if peso <= 0 || altura <= 0 {
+		fmt.Println("Peso e altura devem ser maiores que zero")
+		return
+	}
+	// se altura provavelmente foi informada em centímetros (ex: 181), converte para metros
+	if altura > 10 {
+		altura = altura / 100.0
+	}
+	val := imc(peso, altura)
+	fmt.Printf("IMC: %.2f - %s\n", val, classificaIMC(val))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Peso (kg): 70
+Altura (m): 1.75
+IMC: 22.86 - Peso normal
+</code></pre>
+
+    <h3 id="ex24"><strong>Exercício 24 - Cálculo de MMC</strong></h3>
+    <pre><code class="language-go">package main
+
+import "fmt"
+
+func gcd(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
+func lcm(a, b int) int { return a / gcd(a, b) * b }
+
+func main() {
+	var a, b int
+	fmt.Print("Digite dois números: ")
+	fmt.Scan(&a, &b)
+	fmt.Println(lcm(a, b))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite dois números: 12 18
+36
+</code></pre>
+
+    <h3 id="ex25"><strong>Exercício 25 - Média de números</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
+func media(nums []float64) float64 {
+	s := 0.0
+	for _, v := range nums {
+		s += v
+	}
+	return s / float64(len(nums))
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Digite números separados por espaço: ")
+	line, _ := reader.ReadString('\n')
+	parts := strings.Fields(line)
+	nums := make([]float64, 0, len(parts))
+	for _, p := range parts {
+		if v, err := strconv.ParseFloat(p, 64); err == nil {
+			nums = append(nums, v)
+		}
+	}
+	if len(nums) == 0 {
+		fmt.Println(0)
+		return
+	}
+	fmt.Println(media(nums))
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Digite números separados por espaço: 7 8 9 10
+8.5
+</code></pre>
+
+    <h3 id="exppm"><strong>Leitura de arquivo PPM</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+func main() {
+	img, _ := os.Open("image.ppm")
+
+	reader := bufio.NewReader(img)
+
+	var formato string
+	var linhas, colunas, maxVal int
+
+	fmt.Fscan(reader, &formato)
+	fmt.Fscan(reader, &linhas, &colunas)
+	fmt.Fscan(reader, &maxVal)
+
+	fmt.Printf("Formato: %s\n", formato)
+	fmt.Printf("Dimensões: %dx%d\n", linhas, colunas)
+	fmt.Printf("Valor máximo: %d\n", maxVal)
+	fmt.Printf("Pixels:\n")
+
+	var r, g, b int
+
+	for i := 0; i < linhas; i++ {
+		for j := 0; j < colunas; j++ {
+			fmt.Fscan(reader, &r, &g, &b)
+			_ = r
+			_ = g
+			_ = b
+			fmt.Printf("%d %d %d\n", r, g, b)
+		}
+	}
+}
+</code></pre>
+    <p>Exemplo de saída (com um arquivo image.ppm de exemplo):</p>
+    <pre><code>Formato: P3
+Dimensões: 2x2
+Valor máximo: 255
+Pixels:
+255 0 0
+0 255 0
+0 0 255
+255 255 255
+</code></pre>
+
+    <a href="#extitle" class="back-to-top" title="Voltar ao índice">
+        <img src="up-arrow.png" alt="up">
+    </a>
+
+</body>
+</html>
