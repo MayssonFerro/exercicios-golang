@@ -142,8 +142,8 @@ Escolha GO para performance bruta, eficiência e foco em microsserviços;
 	Escolha Python para projetos de rápido desenvolvimento, facilidade de uso e acesso a um rico ecossistema
 
 Dia 17/10
-O professor fez o ex de ppm, falar sobre
+O professor nos propôs um exercício: criar, através do bloco de notas, uma imagem do tipo ppm. Depois, criar um código capaz de ler e imprimir cada linha do código da imagem .ppm
 
 Dia 24/10
-O professor revisou atributos, falar sobre
+O professor revisou atributos e funções no site gobyexample.com
 tarefa: descobrir diferença entre "defer" e "panick"
