@@ -50,7 +50,7 @@ go build exN.go
 
 ## 🌐 Visualizar o Portfólio
 
-Abra o arquivo `home.html` em qualquer navegador web moderno para navegar pelo portfólio completo.
+Acesse https://mayssonferro.github.io/exercicios-golang/
 
 ## 🛠️ Tecnologias Utilizadas
 
