@@ -244,3 +244,22 @@ h3[id^='ex'] {
     margin: 30px auto;
     border-radius: 8px;
 }
+
+@media (max-width: 600px) {
+    .gopher-relatorio,
+    .gopher-exercicios {
+        float: none;
+        display: block;
+        margin: 10px auto;
+        padding-top: 50px;
+    }
+
+    .index-header-tile {
+        text-align: center;
+    }
+
+    .index-title {
+        text-align: center;
+        padding-top: 100px;
+    }
+}

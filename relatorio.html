@@ -16,7 +16,7 @@
             <a href="exercicios.html">Exercícios em Go</a>
         </nav>
     </header>
-    <img src="gopher-teacher.png" alt="Gopher Teacher" class="gopher-relatorio">
+    <img src="img/gopher-teacher.png" alt="Gopher Teacher" class="gopher-relatorio">
     <h3>Nessa página, descrevo toda as interações feitas dentro ou fora do ambiente de sala de aula.</h3>
     
     <h2>Dia 22/08/2025, primeira aula</h2>
@@ -102,10 +102,30 @@
     </ul>
     <p>Escolha <b>GO</b> para performance bruta, eficiência e foco em microsserviços;
 Escolha <b>Python</b> para projetos de rápido desenvolvimento, facilidade de uso e acesso a um rico ecossistema</p>
+
     <h2>Dia 17/10/2025</h2>
-    <p>O professor nos propôs um exercício: criar, através do bloco de notas, uma imagem do tipo ppm. Depois, criar um código capaz de ler e imprimir cada linha do código da imagem .ppm</p>
+    <p>O professor nos propôs um exercício: criar, através do bloco de notas, uma imagem do tipo ppm. Depois, criar um código capaz de ler e imprimir cada linha do código da imagem .ppm. veja o exercício número 26 em <a href="exercicios.html">Exercícios</a></p>
+
     <h2>Dia 24/10/2025</h2>
     <p>O professor revisou atributos e funções no site <a href="http://gobyexample.com">gobyexample.com</a>
-tarefa: descobrir diferença entre <b>defer</b> e <b>panic</b></p>
+    <h3>Tarefa: descobrir diferença entre <b>defer</b> e <b>panic</b></h3>
+    
+    <h2>Dia 25/10/2025</h2>
+    <h4>panic</h4>
+    <ul>
+        <li>É usado quando acontece um erro inesperado e grave.</li>
+        <li>Interrompe o fluxo normal do programa imediatamente.</li>
+        <li>Se nada tratar, o programa para a execução e mostra uma mensagem de erro.</li>
+    </ul>
+    <p>Exemplo: acessar um índice inválido de slice → causa panic.</p>
+
+    <h4>defer</h4>
+    <ul>
+        <li>É usado para adiar a execução de uma função até o final do bloco atual.</li>
+        <li>A função marcada com defer sempre roda antes de sair da função, mesmo que ocorra um panic.</li>
+        <li>Geralmente usado para fechar arquivos, conexões, liberar recursos.</li>
+    </ul>
+    <h4>Relação entre os dois</h4>
+    <p>Se der um panic, os defer ainda são executados antes do programa realmente parar. Isso permite "limpar" recursos mesmo em caso de erro crítico.</p>
 </body>
 </html>
