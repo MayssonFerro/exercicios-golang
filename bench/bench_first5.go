@@ -19,8 +19,8 @@ func runCmd(cmdName string, args []string, input string) (time.Duration, string,
 }
 
 func main() {
-	exs := []struct{
-		file string
+	exs := []struct {
+		file  string
 		input string
 	}{
 		{"exercicios/ex1.go", "5\n3\n"},
@@ -34,7 +34,7 @@ func main() {
 	for _, ex := range exs {
 		var times []time.Duration
 		var lastOut string
-		for i:=0;i<5;i++ {
+		for i := 0; i < 5; i++ {
 			elapsed, out, err := runCmd("go", []string{"run", ex.file}, ex.input)
 			if err != nil {
 				fmt.Printf("Erro ao executar %s: %v\n", ex.file, err)
@@ -44,11 +44,15 @@ func main() {
 		}
 		// compute average
 		var total time.Duration
-		for _, t := range times { total += t }
+		for _, t := range times {
+			total += t
+		}
 		avg := total / time.Duration(len(times))
 		fmt.Printf("%s - média: %v (runs: ", ex.file, avg)
 		for i, t := range times {
-			if i>0 { fmt.Print(", ") }
+			if i > 0 {
+				fmt.Print(", ")
+			}
 			fmt.Print(t)
 		}
 		fmt.Println(")")
