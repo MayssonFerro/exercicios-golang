@@ -59,6 +59,7 @@ go build file.go
         <li><a href="#ex24">Cálculo de MMC</a></li>
         <li><a href="#ex25">Média de números</a></li>
         <li><a href="#exppm">Leitura de arquivo PPM</a></li>
+        <li><a href="#bench">Benchmark dos 5 primeiros exercícios</a></li>
     </ol>
 
     <h2>Resolução:</h2>
@@ -1059,6 +1060,94 @@ Pixels:
 0 255 0
 0 0 255
 255 255 255
+</code></pre>
+
+    <h3 id="bench"><strong>Benchmark dos 5 primeiros exercícios</strong></h3>
+    <pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"os/exec"
+	"strings"
+	"time"
+)
+
+func runCmd(cmdName string, args []string, input string) (time.Duration, string, error) {
+	cmd := exec.Command(cmdName, args...)
+	if input != "" {
+		cmd.Stdin = strings.NewReader(input)
+	}
+	start := time.Now()
+	out, err := cmd.CombinedOutput()
+	elapsed := time.Since(start)
+	return elapsed, string(out), err
+}
+
+func main() {
+	exs := []struct {
+		file  string
+		input string
+	}{
+		{"ex1.go", "5\n3\n"},
+		{"ex2.go", "10\n2\n"},
+		{"ex3.go", "7\n"},
+		{"ex4.go", "4\n"},
+		{"ex5.go", "17\n"},
+	}
+
+	fmt.Println("Benchmark dos 5 primeiros exercícios (5 execuções cada):")
+	for _, ex := range exs {
+		var times []time.Duration
+		var lastOut string
+		for i := 0; i < 5; i++ {
+			elapsed, out, err := runCmd("go", []string{"run", ex.file}, ex.input)
+			if err != nil {
+				fmt.Printf("Erro ao executar %s: %v\n", ex.file, err)
+			}
+			times = append(times, elapsed)
+			lastOut = out
+		}
+		// compute average
+		var total time.Duration
+		for _, t := range times {
+			total += t
+		}
+		avg := total / time.Duration(len(times))
+		fmt.Printf("%s - média: %v (runs: ", ex.file, avg)
+		for i, t := range times {
+			if i > 0 {
+				fmt.Print(", ")
+			}
+			fmt.Print(t)
+		}
+		fmt.Println(")")
+		fmt.Printf("Última saída:\n%s\n", lastOut)
+	}
+}
+</code></pre>
+    <p>Exemplo de saída:</p>
+    <pre><code>Benchmark dos 5 primeiros exercícios (5 execuções cada):
+ex1.go - média: 546.21446ms (runs: 533.9304ms, 527.0002ms, 508.0981ms, 521.709ms, 640.3346ms)
+Última saída:
+Digite o primeiro número: Digite o segundo número: 5 + 3 = 8
+
+ex2.go - média: 579.82962ms (runs: 828.7058ms, 529.7348ms, 507.5546ms, 536.5545ms, 496.5984ms)
+Última saída:
+Digite o primeiro número: Digite o segundo número: 10 / 2 = 5
+
+ex3.go - média: 609.6909ms (runs: 982.9678ms, 514.2585ms, 520.7954ms, 507.5502ms, 522.8826ms)
+Última saída:
+Digite um número: O antecessor de 7 é 6
+O sucessor de 7 é 8
+
+ex4.go - média: 637.55574ms (runs: 626.7353ms, 967.5007ms, 544.8994ms, 505.2538ms, 543.3895ms)
+Última saída:
+Digite um número: O número 4 é PAR
+O número 4 é positivo
+
+ex5.go - média: 616.33482ms (runs: 509.2513ms, 543.0134ms, 980.6328ms, 530.0939ms, 518.6827ms)
+Última saída:
+Digite um número: 17 é primo
 </code></pre>
 
     <a href="#extitle" class="back-to-top" title="Voltar ao índice">

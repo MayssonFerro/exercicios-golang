@@ -235,23 +235,37 @@ h3[id^='ex'] {
     border-radius: 8px;
 }
 
-.author-photo {
+.author-container {
     float: right;
+    margin: -50px 0 16px 16px;
+    text-align: center;
+}
+
+.author-photo {
     width: 120px;
     height: auto;
-    margin: -50px 0 16px 16px;
     border-radius: 50%;
+}
+
+.author-label {
+    margin: 5px 0 0 0;
+    font-weight: 500;
+    font-size: 0.9em;
 }
 
 @media (max-width: 600px) {
     .gopher-relatorio,
     .gopher-exercicios,
-    .author-photo {
+    .author-container {
         float: none;
         display: block;
         margin: 10px auto;
         padding-top: 50px;
         width: 100px;
+    }
+
+    .author-photo {
+        width: 100%;
     }
 
     .index-header-tile {

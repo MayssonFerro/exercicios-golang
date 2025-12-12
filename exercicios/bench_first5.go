@@ -23,11 +23,11 @@ func main() {
 		file  string
 		input string
 	}{
-		{"exercicios/ex1.go", "5\n3\n"},
-		{"exercicios/ex2.go", "10\n2\n"},
-		{"exercicios/ex3.go", "7\n"},
-		{"exercicios/ex4.go", "4\n"},
-		{"exercicios/ex5.go", "17\n"},
+		{"ex1.go", "5\n3\n"},
+		{"ex2.go", "10\n2\n"},
+		{"ex3.go", "7\n"},
+		{"ex4.go", "4\n"},
+		{"ex5.go", "17\n"},
 	}
 
 	fmt.Println("Benchmark dos 5 primeiros exercícios (5 execuções cada):")
